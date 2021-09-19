@@ -25,3 +25,6 @@ for (let i = 0; i < pokemonList.length; i++) {
     );
   }
 }
+pokemonList.forEach(function(pokemonList) {
+  console.log(pokemonList.name + ' is ' + pokemonList.height + ' Feet height.');
+});
