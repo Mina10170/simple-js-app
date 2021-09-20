@@ -1,7 +1,4 @@
 // list of Pokemons
-pokemonList.forEach(function(pokemonList) {
-  console.log(pokemonList.name + ' is ' + pokemonList.height + ' Feet height.');
-});
 let pokemonRepository = (function () {
 let pokemonList = [
 {name:"balbasure",height:7, type:['grass', 'poison']},
@@ -21,7 +18,9 @@ let pokemonList = [
     getAll: getAll
   };
 })();
- pokemonRepository.getAll().forEach(pokemon)
+ pokemonRepository.getAll().forEach(function(pokemonList) {
+  console.log(pokemonList.name + ' is ' + pokemonList.height + ' Feet height.');
+});
 
 
 
