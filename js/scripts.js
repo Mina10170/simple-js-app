@@ -13,20 +13,17 @@ let pokemonList = [
   let unOrderedList = document.querySelector('ul');
   let listItem = document.createElement('li');
   let button = document.createElement('button')
-  button.innerText = pokemonList.name;
+  button.innerText = pokemon.name;
 
   button.classList.add('button');
   listItem.appendChild(button);
   unOrderedList.appendChild(listItem);
-  addEventListener(button, pokemon);
-  }
-
+  button.addEventListener('click', function () { showDetails(pokemon); });
+}
 
 function showDetails(pokemon) {
-    loadDetails(pokemon).then(function () {
-      console.log(pokemon);
-    });
-  }
+     {console.log(pokemon); };
+}
 
   function getAll() {
     return pokemonList;
