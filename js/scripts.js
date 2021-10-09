@@ -9,7 +9,7 @@ let pokemonRepository = (function () {
   function getAll() {
     return pokemonList;
   }
-  
+
 // Make the modal container a global varaible to use with any function.
   let modalContainer = document.querySelector('#modal-container');
 
