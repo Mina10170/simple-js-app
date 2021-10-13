@@ -1,4 +1,4 @@
-let pokemonRepository = (function () {
+let pokemonRepository = (function() {
   //  Create an array within a pokemonRepository called pokemonList,
   //    and add the pokemon using objects.
   let pokemonList = [];
@@ -9,11 +9,11 @@ let pokemonRepository = (function () {
   let filter = document.querySelector('#filter');
 
   //Filter Pokemon event
-  filter.addEventListener('input', function () {
+  filter.addEventListener('input', function() {
     let pokemons = document.querySelectorAll('.list-group-item');
     let value = filter.value.toLowerCase();
 
-    pokemons.forEach(function (pokemon) {
+    pokemons.forEach(function(pokemon) {
       if (pokemon.innerText.toLowerCase().indexOf(value) > -1) {
         pokemon.style.display = '';
       } else {
@@ -40,7 +40,7 @@ let pokemonRepository = (function () {
       'list-group-item',
       'col-xl-3',
       'col-lg-4',
-      'col-md-6'
+      'col-md-6',
     );
     let button = document.createElement('button');
     button.classList.add('btn', 'button-styles');
@@ -56,18 +56,18 @@ let pokemonRepository = (function () {
 
   // Created an event listener for the pokemon button.
   function addEventListener(button, pokemon) {
-    button.addEventListener('click', function () {
+    button.addEventListener('click', function() {
       showDetails(pokemon);
     });
   }
 
- function showDetails(pokemon) {
-    loadDetails(pokemon).then(function () {
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function() {
       showModal(pokemon);
     });
   }
 
-     // Created a modal to display each pokemon and details.
+  // Created a modal to display each pokemon and details.
   function showModal(pokemon) {
     let modalBody = document.querySelector('.modal-body');
 
@@ -88,7 +88,7 @@ let pokemonRepository = (function () {
     let pokemonTypes = [];
 
     //Looped through the type array using for each.
-    Object.keys(pokemon.type).forEach((key) => {
+    Object.keys(pokemon.type).forEach(key => {
       pokemonTypes.push(pokemon.type[key].type.name);
     });
 
@@ -99,7 +99,7 @@ let pokemonRepository = (function () {
     //created an array to store abilities.
     let pokemonAbilities = [];
 
-    Object.keys(pokemon.abilities).forEach((key) => {
+    Object.keys(pokemon.abilities).forEach(key => {
       pokemonAbilities.push(pokemon.abilities[key].ability.name);
     });
 
@@ -120,11 +120,11 @@ let pokemonRepository = (function () {
   //Created a function promise to load the pokemon list by fetching it from an external api.
   function loadList() {
     return fetch(apiUrl)
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
       })
-      .then(function (json) {
-        json.results.forEach(function (item) {
+      .then(function(json) {
+        json.results.forEach(function(item) {
           let pokemon = {
             name: item.name,
             detailsUrl: item.url,
@@ -132,7 +132,7 @@ let pokemonRepository = (function () {
           add(pokemon);
         });
       })
-      .catch(function (e) {
+      .catch(function(e) {
         console.error(e);
       });
   }
@@ -141,17 +141,17 @@ let pokemonRepository = (function () {
   function loadDetails(item) {
     let url = item.detailsUrl;
     return fetch(url)
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
       })
-      .then(function (details) {
+      .then(function(details) {
         item.imageUrl = details.sprites.other.dream_world.front_default;
         item.height = details.height;
         item.type = details.types;
         item.abilities = details.abilities;
         item.weight = details.weight;
       })
-      .catch(function (e) {
+      .catch(function(e) {
         console.error(e);
       });
   }
@@ -167,8 +167,8 @@ let pokemonRepository = (function () {
 })();
 
 // Create a loop using the forEach predifined function to iterate through the array list within the pokemon repository created above. Only rechable by calling the function getAll(); within the line of code.
-pokemonRepository.loadList().then(function () {
-  pokemonRepository.getAll().forEach(function (pokemon) {
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
