@@ -12,7 +12,6 @@ let pokemonRepository = (function() {
   filter.addEventListener('input', function() {
     let pokemons = document.querySelectorAll('.list-group-item');
     let value = filter.value.toLowerCase();
-
     pokemons.forEach(function(pokemon) {
       if (pokemon.innerText.toLowerCase().indexOf(value) > -1) {
         pokemon.style.display = '';
